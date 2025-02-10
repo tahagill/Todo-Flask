@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Todo List</h2>
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" id="desc" name="desc" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Add Todo</button>
+    </form>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in alltodo %}
+            <tr>
+                <th scope="row">{{ todo.sn }}</th>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.desc }}</td>
+                <td>
+                    <a href="/update/{{ todo.sn }}" class="btn btn-warning">Update</a>
+                    <a href="/delete/{{ todo.sn }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
