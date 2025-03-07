@@ -3,8 +3,9 @@
 {% block title %}Todo List{% endblock %}
 
 {% block content %}
-    <h2 class="text-center">Todo List</h2>
-    <form method="POST" action="/">
+    <h2 class="text-center mb-4">Todo List</h2>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" required>
@@ -16,24 +17,27 @@
         <button type="submit" class="btn btn-success">Add Todo</button>
     </form>
 
-    <table class="table mt-3">
-        <thead>
+    <table class="table mt-4">
+        <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Actions</th>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for todo in alltodo %}
             <tr>
-                <th scope="row">{{ todo.sn }}</th>
+                <td>{{ todo.id }}</td>
                 <td>{{ todo.title }}</td>
                 <td>{{ todo.desc }}</td>
                 <td>
-                    <a href="/update/{{ todo.sn }}" class="btn btn-warning">Update</a>
-                    <a href="/delete/{{ todo.sn }}" class="btn btn-danger">Delete</a>
+                    <a href="/update/{{ todo.id }}" class="btn btn-warning btn-sm">Update</a>
+                    <form method="POST" action="/delete/{{ todo.id }}" style="display: inline;">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
