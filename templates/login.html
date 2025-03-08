@@ -4,21 +4,165 @@
 
 {% block content %}
 <div class="auth-container">
-    <h2 class="text-center mb-4">Login</h2>
-    <form method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </form>
-    <div class="text-center mt-3">
-        <a href="/register">Don't have an account? Register</a>
+    <div class="auth-card">
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to continue</p>
+        
+        <form method="POST" class="auth-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
+            <div class="form-group">
+                <input type="text" class="form-input" id="username" name="username" placeholder=" " required>
+                <label for="username" class="form-label">Username</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-input" id="password" name="password" placeholder=" " required>
+                <label for="password" class="form-label">Password</label>
+            </div>
+            
+            <button type="submit" class="auth-button">Login →</button>
+        </form>
+        
+        <p class="auth-footer">
+            New here? <a href="/register" class="auth-link">Create account</a>
+        </p>
     </div>
 </div>
+
+<style>
+    /* General Styles */
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #f8f9fa;
+    }
+
+    .auth-container {
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .auth-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        max-width: 400px;
+        transition: transform 0.2s ease;
+    }
+
+    .auth-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #2d3436;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .auth-subtitle {
+        color: #636e72;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #6c5ce7;
+    }
+
+    .form-label {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #636e72;
+        pointer-events: none;
+        transition: all 0.2s ease;
+        background: white;
+        padding: 0 0.25rem;
+    }
+
+    .form-input:focus ~ .form-label,
+    .form-input:not(:placeholder-shown) ~ .form-label {
+        top: 0;
+        font-size: 0.875rem;
+        color: #6c5ce7;
+    }
+
+    .auth-button {
+        width: 100%;
+        padding: 1rem;
+        background: #6c5ce7;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .auth-button:hover {
+        background: #5b4bc4;
+    }
+
+    .auth-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #636e72;
+    }
+
+    .auth-link {
+        color: #6c5ce7;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .auth-link:hover {
+        color: #5b4bc4;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 480px) {
+        .auth-card {
+            padding: 1.5rem;
+        }
+
+        .auth-title {
+            font-size: 1.5rem;
+        }
+
+        .auth-subtitle {
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            padding: 0.8rem;
+        }
+
+        .auth-button {
+            padding: 0.8rem;
+        }
+    }
+</style>
 {% endblock %}

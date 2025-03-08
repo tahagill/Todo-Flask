@@ -3,7 +3,11 @@
 {% block title %}Todo List{% endblock %}
 
 {% block content %}
-    <h2 class="text-center mb-4">Todo List</h2>
+    <div class="welcome-header">
+        <h2 class="text-center mb-3">Welcome {{ current_user.username }} 👋</h2>
+        <h3 class="text-center mb-4">Todo List</h3>
+    </div>
+    
     <form method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
