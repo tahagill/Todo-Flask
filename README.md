@@ -1,6 +1,6 @@
 # To-Do App
 
-This is a basic To-Do application built with **Flask** for the backend, **SQLite3** for the database, and **HTML/CSS** for the frontend. It allows users to create, read, update, and delete tasks. The app is designed to help you manage your daily tasks efficiently with a simple and intuitive interface.
+This is a basic To-Do application built with **Flask** for the backend, **SQLite3** for the database, and **HTML/CSS** for the frontend. It allows users to create, read, update, and delete tasks. The app is designed to help you manage your daily tasks efficiently with a simple and intuitive interface
 
 ## 🛠️ Tech Stack
 
