@@ -8,7 +8,7 @@
         <h1 class="auth-title">Welcome Back</h1>
         <p class="auth-subtitle">Sign in to continue</p>
         
-        <form method="POST" class="auth-form">
+        <form method="POST" class="auth-form" autocomplete="off">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             
             <div class="form-group">

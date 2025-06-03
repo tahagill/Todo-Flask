@@ -8,7 +8,7 @@
         <h1 class="auth-title">Create Account</h1>
         <p class="auth-subtitle">Get started with your todo list</p>
         
-        <form method="POST" class="auth-form">
+        <form method="POST" class="auth-form" autocomplete="off">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             
             <div class="form-group">
